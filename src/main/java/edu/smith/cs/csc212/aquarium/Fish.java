@@ -2,16 +2,11 @@ package edu.smith.cs.csc212.aquarium;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.Random;
 
 public class Fish {
-	/**
-	 * How tall is the fish?
-	 */
-	public static int HEIGHT = 50;
-	/**
-	 * The positioning of the fish. 
-	 */
-	private String direction;
+
+
 	/**
 	 * The position of the Fish; x-coordinate.
 	 */
@@ -25,26 +20,76 @@ public class Fish {
 	 */
 	public Color color;
 	
-	public boolean facingLeft;
+	public boolean facingLeft = true;
 	
-	public boolean isLittle;
+	public boolean isLittle = false;
+	
+	int destX = 0;
+	
+	int destY = 0;
 	
 	//construct a fish at position (x,y) with color color
-	public Fish(Color colorin, int sx, int sy) {
+	public Fish(Color colorin, int sx, int sy, boolean small) {
+		this.destX = randDest();
+		this.destY = randDest();
 		this.x = sx;
 		this.y= sy;
 		this.color = colorin;
+		this.isLittle = small;
 	}
 	public void draw(Graphics2D window) {
 		this.swim();
-		// if big
-		DrawFish.facingLeft(window, this.color,  this.x, this.y);
-		DrawFish.facingRight(window, this.color,  this.x, this.y);
-		//if small
-		DrawFish.smallFacingLeft(window, this.color,  this.x, this.y);
-		DrawFish.smallFacingLeft(window, this.color,  this.x, this.y);
+		
+		if (isLittle == false){
+			if( facingLeft == true) {
+				DrawFish.facingLeft(window, this.color,  this.x, this.y);
+			}
+			else if(facingLeft == false) {
+				DrawFish.facingRight(window, this.color,  this.x, this.y);
+			}
+			
+		
+		}
+		
+		else if (isLittle == true) {
+			if( facingLeft == true) {
+				DrawFish.smallFacingLeft(window, this.color,  this.x, this.y);
+			}
+			else if(facingLeft == false) {
+				DrawFish.smallFacingRight(window, this.color,  this.x, this.y);
+			}
+		}
+		
 	}
 	public void swim() {
-		this.y += 1;
+
+		
+		// Select a random destination for the fish.
+
+		
+		if((this.x == this.destX) && (this.y == this.destY)) {
+			this.destX = randDest();
+			this.destY = randDest();
+		}
+		if(this.destX> this.x) {
+			this.facingLeft = false;
+			this.x ++;
+		} else if(destX< this.x) {
+			this.facingLeft = true;
+			this.x --;
+		}
+		
+		if(this.destY>this.y) {
+			this.y++;
+		} else if(this.destY< this.y) {
+			this.y--;
+		}
+		
 	}
+	public int randDest() {
+		Random pos = new Random();
+		int a = pos.nextInt(Aquarium.WIDTH);
+		return a;
+	}
+	
 }
