@@ -42,6 +42,8 @@ public class Aquarium extends GFX {
 	}
 	Fish fish1 = new Fish(Color.pink, 250, 0, false);
 	Fish finn = new Fish(Color.gray, 100, 300, true);
+	Bubble bub = new Bubble();
+	
 
 	@Override
 	public void draw(Graphics2D g) {
@@ -51,6 +53,7 @@ public class Aquarium extends GFX {
 
 		fish1.draw(g);
 		finn.draw(g);
+		bub.draw(g);
 		
 
 		// Draw our snail!
