@@ -1,6 +1,7 @@
 package edu.smith.cs.csc212.aquarium;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 
 import me.jjfoley.gfx.GFX;
@@ -43,8 +44,16 @@ public class Aquarium extends GFX {
 	Fish fish1 = new Fish(Color.pink, 250, 0, false);
 	Fish finn = new Fish(Color.gray, 100, 300, true);
 	Bubble bub = new Bubble();
-	
+	Bubble bub1 = new Bubble();
+	BubbleStream stream1 = new BubbleStream();
 
+	public void treasureChest(Graphics2D g) {
+	    Font f = g.getFont();
+	    g.setFont(f.deriveFont(30.23f));
+	    g.setColor(Color.red);
+	    g.drawString("bubble machine", 290, 490);
+
+	}
 	@Override
 	public void draw(Graphics2D g) {
 		// Draw the "ocean" background.
@@ -54,7 +63,10 @@ public class Aquarium extends GFX {
 		fish1.draw(g);
 		finn.draw(g);
 		bub.draw(g);
-		
+		bub1.draw(g);
+		stream1.draw(g);
+		this.treasureChest(g);
+
 
 		// Draw our snail!
 		algorithm.draw(g);

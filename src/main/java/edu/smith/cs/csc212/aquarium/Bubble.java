@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Bubble {
 	//public Color bubCol = new Color(0,191,255,200);
-	public Color color = Color.gray;
+	public Color color = new Color(0,191,255,200);
 	public double x = 0;
 	public double y = 450;
 	public int radius;
@@ -48,12 +48,20 @@ public class Bubble {
 	public double randSpeed() {
 		Random speed = new Random();
 		int speedy = speed.nextInt(10);
-		double slowspeed = speedy/10.0;
+		double slowspeed = (speedy+1)/10.0;
 		return slowspeed;
 		
 	}
 	public void move(){
 		xWiggle = this.randWiggle();
+		if(this.y<-50) {
+			this.y = 450;
+		}
+		if(this.x>510 || this.x <250) {
+			this.x = 450;
+			this.y = 450;
+			bubSpeed = randSpeed();
+		}
 		this.y -= bubSpeed;
 		this.x += xWiggle;
 		
@@ -63,7 +71,7 @@ public class Bubble {
 		double wiggle;
 		int wig = wiggly.nextInt(10);
 		wig++;
-		if(wig%3 == 0) {
+		if(wig%2 == 0) {
 			wiggle = wig/-10.0;
 		} else {
 			wiggle = wig/10.0;
