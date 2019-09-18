@@ -50,6 +50,19 @@ public class Snail {
 	 * TODO: move the snail about.
 	 */
 	public void move() {
+		if(this.y==0) {
+			setSide("top");
+			this.x++;
+		}else if(this.x==500) {
+			setSide("right");
+			this.y++;
+		}else if(this.y==500) {
+			setSide("bottom");
+			this.x--;	
+		}else if(this.x==0) {
+			setSide("left");
+			this.y--;
+		}
 
 	}
 

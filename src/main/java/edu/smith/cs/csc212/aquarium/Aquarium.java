@@ -27,6 +27,10 @@ public class Aquarium extends GFX {
 	 * This is a static variable that tells us how tall the aquarium is.
 	 */
 	public static int HEIGHT = 500;
+	
+	public Color tankColor = new Color(0,100,150,255);
+	
+	public int green = 100;
 
 	/**
 	 * Put a snail on the top of the tank.
@@ -43,10 +47,19 @@ public class Aquarium extends GFX {
 	}
 	Fish fish1 = new Fish(Color.pink, 250, 0, false);
 	Fish finn = new Fish(Color.gray, 100, 300, true);
+	//I'm really sorry for calling my hungry fish hungo
+	//HungryFish hungo = new HungryFish(0,0);
 	Bubble bub = new Bubble();
 	Bubble bub1 = new Bubble();
 	BubbleStream stream1 = new BubbleStream();
-
+	
+	public void alge() {
+		while(this.green<255) {
+			//this.tankColor = Color(0,this.green,150,255);
+			this.green+=5;
+		}
+		
+	}
 	public void treasureChest(Graphics2D g) {
 	    Font f = g.getFont();
 	    g.setFont(f.deriveFont(30.23f));
@@ -57,7 +70,7 @@ public class Aquarium extends GFX {
 	@Override
 	public void draw(Graphics2D g) {
 		// Draw the "ocean" background.
-		g.setColor(Color.blue);
+		g.setColor(this.tankColor);
 		g.fillRect(0, 0, getWidth(), getHeight());
 
 		fish1.draw(g);
@@ -65,15 +78,18 @@ public class Aquarium extends GFX {
 		bub.draw(g);
 		bub1.draw(g);
 		stream1.draw(g);
+		//hungo.draw(g);
+		//hungo.crunchTime(g);
 		this.treasureChest(g);
 
 
 		// Draw our snail!
 		algorithm.draw(g);
+		this.alge();
 
 
 	}
-
+	
 	public static void main(String[] args) {
 		// Uncomment this to make it go slower!
 		// GFX.FPS = 10;
