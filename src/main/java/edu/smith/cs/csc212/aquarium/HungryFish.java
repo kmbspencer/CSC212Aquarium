@@ -27,11 +27,11 @@ public class HungryFish extends Fish {
 	
 	int foodRadius = 10;
 	
-	public Color foodColor = new Color(0,255,255,255);
+	public Color foodColor = new Color(16, 89, 21,255);
 	
-	public int foodX;
+	public int foodX=50;
 	
-	public int foodY;
+	public int foodY=200;
 	
 	public boolean hungry = false;
 	
@@ -136,5 +136,6 @@ public class HungryFish extends Fish {
 		}
 		
 	}
+	
 
 }

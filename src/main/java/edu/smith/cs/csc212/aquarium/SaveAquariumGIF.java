@@ -12,7 +12,7 @@ public class SaveAquariumGIF {
 	 */
 	public static void main(String[] args) {
 		Aquarium app = new Aquarium();
-		int numSeconds = 3;
+		int numSeconds = 10;
 		app.playToGIF(new File("aquarium.gif"), 50 * numSeconds);
 	}
 

@@ -45,40 +45,52 @@ public class Aquarium extends GFX {
 		// Don't change this here, edit the variables instead.
 		super(WIDTH, HEIGHT);
 	}
-	Fish fish1 = new Fish(Color.pink, 250, 0, false);
-	Fish finn = new Fish(Color.gray, 100, 300, true);
+	//Fish fish1 = new Fish(Color.pink, 250, 0, true);
+	//Fish finn = new Fish(Color.gray, 100, 300, true);
+	Shark jaws = new Shark( 250,300);
 	//I'm really sorry for calling my hungry fish hungo
-	//HungryFish hungo = new HungryFish(0,0);
+	HungryFish hungo = new HungryFish(0,0);
 	Bubble bub = new Bubble();
 	Bubble bub1 = new Bubble();
 	BubbleStream stream1 = new BubbleStream();
+	FishList school1 = new FishList();
+	//hungo.drawFood(g);
+	
 	
 	public void alge() {
-		while(this.green<255) {
+		if(this.green<255) {
 			//this.tankColor = Color(0,this.green,150,255);
-			this.green+=5;
+			this.green++;
 		}
-		
+	}
+	public void clean() {
+		if(this.green>200) {
+			this.green--;
+		}
 	}
 	public void treasureChest(Graphics2D g) {
 	    Font f = g.getFont();
 	    g.setFont(f.deriveFont(30.23f));
 	    g.setColor(Color.red);
 	    g.drawString("bubble machine", 290, 490);
+		hungo.drawFood(g);
 
 	}
 	@Override
 	public void draw(Graphics2D g) {
 		// Draw the "ocean" background.
+		this.tankColor = new Color(0,this.green,150,255);
 		g.setColor(this.tankColor);
 		g.fillRect(0, 0, getWidth(), getHeight());
 
-		fish1.draw(g);
-		finn.draw(g);
+		//fish1.draw(g);
+		//finn.draw(g);
 		bub.draw(g);
 		bub1.draw(g);
 		stream1.draw(g);
-		//hungo.draw(g);
+		jaws.draw(g);
+		hungo.draw(g);
+		school1.draw(g);
 		//hungo.crunchTime(g);
 		this.treasureChest(g);
 
